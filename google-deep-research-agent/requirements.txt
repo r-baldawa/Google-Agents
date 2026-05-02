@@ -1,0 +1,13 @@
+# Google Deep Research Agent - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core dependencies
+requests>=2.31.0          # For API calls to Google Deep Research
+python-dotenv>=1.0.0      # For environment variable management
+
+# watsonx Orchestrate SDK
+ibm-watsonx-orchestrate>=0.1.0  # For agent deployment
+
+# Optional but recommended
+urllib3>=2.0.0           # HTTP client (usually installed with requests)
+certifi>=2023.0.0        # SSL certificates (usually installed with requests)
