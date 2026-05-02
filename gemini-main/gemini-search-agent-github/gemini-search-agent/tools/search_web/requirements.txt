@@ -1,0 +1,7 @@
+# Google Generative AI SDK for Python
+# Required for using Gemini API with Google Search grounding
+google-genai>=0.2.0
+
+# IBM watsonx Orchestrate SDK
+# Required for creating tools that work with Orchestrate
+ibm-watsonx-orchestrate>=2.5.1

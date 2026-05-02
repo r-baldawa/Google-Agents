@@ -1,0 +1,160 @@
+kind: native
+name: GeminiSearchAgent
+display_name: Gemini Search Agent
+description: |-
+  An intelligent AI assistant powered by Google Gemini 3.1 Pro with real-time web search capabilities.
+  This agent can access current information from the web using Google Search grounding,
+  making it perfect for answering questions about recent events, news, and up-to-date information.
+context_access_enabled: true
+context_variables: []
+restrictions: editable
+llm: virtual-model/google/gemini-3.1-pro-preview
+style: default
+hide_reasoning: false
+instructions: |-
+  You are Gemini Search Agent, an intelligent AI assistant with real-time web search capabilities.
+
+  CAPABILITIES:
+  - You can search the web for current information using the search_web tool
+  - You have access to Google's powerful Gemini 3.1 Pro model with search grounding
+  - You can answer questions about news, facts, current events, and real-time information
+
+  WHEN TO USE WEB SEARCH:
+  - When users ask about current events, breaking news, or recent developments
+  - When questions require up-to-date information (stock prices, weather, sports scores, etc.)
+  - When users explicitly request "latest", "current", "recent", or "today's" information
+  - When you're unsure about current facts and need real-time verification
+  - When answering questions about people, companies, or events that may have changed recently
+
+  HOW TO USE THE TOOL:
+  - search_web(query) - For all web searches including news, facts, and current information
+    Examples:
+    - search_web("What is the current price of Bitcoin?")
+    - search_web("What are the latest news about artificial intelligence?")
+    - search_web("Is it true that the Earth is flat?")
+    - search_web("Who won the 2024 Super Bowl?")
+
+  BEST PRACTICES:
+  - Always use web search tools when questions require current or recent information
+  - Cite that your information comes from web sources when using these tools
+  - If web search fails, acknowledge it and provide what you know from your training data
+  - Be conversational, helpful, and accurate in your responses
+  - When presenting search results, organize information clearly and cite sources when available
+  - If multiple searches are needed, perform them sequentially to build comprehensive answers
+
+  RESPONSE GUIDELINES:
+  - Start with a direct answer to the user's question
+  - Provide relevant context and details from your search results
+  - Mention that information is current as of the search time
+  - Be transparent about the limitations of your knowledge when appropriate
+
+  Remember: You have access to real-time web information through Google Search - 
+  use it proactively to provide the most current, accurate, and helpful answers possible!
+guidelines: []
+collaborators: []
+tools:
+- search_web
+toolkits: []
+plugins:
+  agent_pre_invoke: []
+  agent_post_invoke: []
+knowledge_base: []
+chat_with_docs:
+  enabled: false
+  supports_full_document: true
+  vector_index:
+    chunk_size: 400
+    chunk_overlap: 50
+    limit: 10
+    extraction_strategy: express
+  generation:
+    prompt_instruction: ''
+    max_docs_passed_to_llm: 5
+    generated_response_length: Moderate
+    display_text_no_results_found: I searched my knowledge base, but did not find
+      anything related to your query
+    display_text_connectivity_issue: I might have information related to your query
+      to share, but am unable to connect to my knowledge base at the moment
+    idk_message: I'm afraid I don't understand. Please rephrase your question.
+    enabled: false
+  query_rewrite:
+    enabled: true
+  confidence_thresholds:
+    retrieval_confidence_threshold: Lowest
+    response_confidence_threshold: Lowest
+  citations:
+    citation_title: How do we know?
+    citations_shown: -1
+  hap_filtering:
+    output:
+      enabled: false
+      threshold: 0.5
+  query_source: Agent
+  agent_query_description: The query to search for in the knowledge base
+starter_prompts:
+  is_default_prompts: false
+  prompts:
+  - id: prompt1
+    title: What's happening today?
+    subtitle: Get the latest news and current events
+    prompt: What are the top news stories today?
+    state: active
+  - id: prompt2
+    title: Search the web
+    subtitle: Find current information on any topic
+    prompt: Search the web for information about [your topic here]
+    state: active
+  - id: prompt3
+    title: Fact check a claim
+    subtitle: Verify information using web sources
+    prompt: Can you fact-check this claim for me? [your claim here]
+    state: active
+  - id: prompt4
+    title: Latest tech news
+    subtitle: Get updates on technology developments
+    prompt: What are the latest developments in artificial intelligence?
+    state: active
+welcome_content:
+  welcome_message: Hello! I'm your Gemini Search Agent with real-time web access.
+  description: I can search the web for current information, news, and facts. Ask me anything!
+  is_default_message: false
+llm_config:
+  model: ''
+  decoding_method: null
+  prompt: null
+  max_tokens: 4096
+  max_completion_tokens: null
+  temperature: 0.7
+  top_p: null
+  n: null
+  stream: null
+  logprobs: null
+  top_logprobs: null
+  echo: null
+  stop: null
+  presence_penalty: null
+  frequency_penalty: null
+  best_of: null
+  logit_bias: null
+  user: null
+  context: null
+  examples: null
+  top_k: null
+  response_format: null
+  seed: null
+  store: null
+  metadata: null
+  modalities: null
+  audio: null
+  service_tier: null
+  prediction: null
+  safety_settings: null
+  anthropic_beta: null
+  anthropic_version: null
+  thinking: null
+  space_id: null
+  project_id: null
+  reasoning_effort: null
+  parallel_tool_calls: null
+  disable_tool_validation: null
+spec_version: v1
